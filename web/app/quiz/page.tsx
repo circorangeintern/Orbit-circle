@@ -368,15 +368,6 @@ function QuizPage() {
 
   submitAnswer.mutate(payload, {
     onSuccess: (data) => {
-      // 🔍 DEBUG LOGS: Inspect backend response after each question
-      console.log("=== SUBMIT ANSWER RESPONSE ===");
-      console.log("Submitted Question ID:", answeredQuestion.id);
-      console.log("Full Server Response:", data);
-      console.log("Extracted Traits / AI Feedback:", data.aiFeedback);
-      console.log("Is Quiz Finished (done):", data.done);
-      console.log("Next Question:", data.nextQuestion);
-      console.log("===============================");
-
       setHistory((h) => [...h, { question: answeredQuestion, answerSummary }]);
       setQuestionsAnswered((n) => n + 1);
       resetAnswerState();
