@@ -42,6 +42,21 @@ export default function OnboardingPage() {
     }
   }, [router]);
 
+  // Preload onboarding background images to prevent lag
+  useEffect(() => {
+    const imageUrls = [
+      "/image/background1.png",
+      "/image/background2a.png",
+      "/image/background3a.png",
+      "/image/background4a.png",
+    ];
+
+    imageUrls.forEach((url) => {
+      const img = new Image();
+      img.src = url;
+    });
+  }, []);
+
   const goNext = () => setStep((s) => (s < 4 ? ((s + 1) as Step) : s));
 
   const renderStep = () => {
